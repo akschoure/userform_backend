@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     @Column(length=30,unique = true)
     private String userName;
     private int age;
-    private double salery;
+    private double salary;
 
 
 
