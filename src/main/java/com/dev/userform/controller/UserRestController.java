@@ -11,34 +11,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
+@CrossOrigin
 public class UserRestController {
 
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Integer id){
         return ResponseEntity.ok(userService.getUser(id));
     }
 
 
-    @PostMapping("/user")
+    @PostMapping
     public ResponseEntity<User> addUser(@RequestBody User user) {
 
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Integer id){
         return ResponseEntity.ok(userService.deleteUser(id));
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateUser (@RequestBody User user , @PathVariable Integer id){
         return ResponseEntity.ok(userService.updateUser(user));
     }
